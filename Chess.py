@@ -44,7 +44,6 @@ class ChessSANValidator(QWidget):
         if not san_text:
             QMessageBox.warning(self, "Error", "Por favor, ingrese una partida.")
             return
-
         try:
             moves = self.parse_san(san_text)
         except ValueError as e:
@@ -171,7 +170,6 @@ class ChessSANValidator(QWidget):
         assign_positions.counter = [0]
         assign_positions(self.root)
 
-        print(positions.values())
         # Segundo recorrido: dibuja usando las posiciones calculadas
         def draw_node(node, is_right_child=False):
             if node is None:
@@ -229,7 +227,6 @@ class ChessSANValidator(QWidget):
                 draw_node(node.right, is_right_child=True)  # Hijo derecho: negro
 
         draw_node(self.root)
-
 
 
 if __name__ == "__main__":
